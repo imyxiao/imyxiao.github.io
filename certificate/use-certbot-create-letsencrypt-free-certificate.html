@@ -38,6 +38,8 @@
 <![endif]-->
 <meta charset="utf-8">
 
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
@@ -184,17 +186,17 @@
 <p>比如某公司旗下有一个域名叫 <code>example.com</code>，但因为业务需要，解析了很多子域名，比如有<code>www.example.com；login.example.com；shop.example.com；bill.example.com</code></p>
 <p>可能多达几十上百个这样的子域名,但为每一个域名都申请一张证书，将会是很昂贵的费用。所以该公司申请了一张支持<code>*.example.com</code>的通配符证书，保护了任何前缀的子域名。</p>
 <a id="more"></a> 
-<h2 id="Let’s-Encrypt"><a href="#Let’s-Encrypt" class="headerlink" title="Let’s Encrypt"></a>Let’s Encrypt</h2><p><a href="https://letsencrypt.org" target="_blank" rel="noopener">Let’s Encrypt</a>是由非营利互联网安全研究组织（ISRG）支持的免费，自动化和开放的证书认证机构。他们搞了一个非常有创意的事情，设计了一个<a href="https://ietf-wg-acme.github.io/acme/" target="_blank" rel="noopener">ACME协议</a>，该协议通常在我们的Web主机上运行,目前该协议的版本是v1。</p>
+<h2 id="Let’s-Encrypt"><a href="#Let’s-Encrypt" class="headerlink" title="Let’s Encrypt"></a>Let’s Encrypt</h2><p><a href="https://letsencrypt.org">Let’s Encrypt</a>是由非营利互联网安全研究组织（ISRG）支持的免费，自动化和开放的证书认证机构。他们搞了一个非常有创意的事情，设计了一个<a href="https://ietf-wg-acme.github.io/acme/">ACME协议</a>，该协议通常在我们的Web主机上运行,目前该协议的版本是v1。</p>
 <p>那什么是ACME协议，传统的 CA 机构是人工受理证书申请、证书更新、证书撤销，完全是手动处理的。而 ACME 协议规范化了证书申请、更新、撤销等流程，只要一个客户端实现了该协议的功能，通过客户端就可以向 Let’s Encrypt 申请证书，也就是说 Let’s Encrypt CA 完全是自动化操作的。</p>
 <h2 id="申请-Let’s-Encrypt-通配符证书"><a href="#申请-Let’s-Encrypt-通配符证书" class="headerlink" title="申请 Let’s Encrypt 通配符证书"></a>申请 Let’s Encrypt 通配符证书</h2><p>为了实现通配符证书，Let’s Encrypt 对 ACME 协议的实现进行了升级，只有 v2 协议才能支持通配符证书，相关的新闻和技术点见：</p>
 <ul>
-<li><a href="https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579" target="_blank" rel="noopener">ACME v2 and Wildcard Certificate Support is Live</a></li>
-<li><a href="https://community.letsencrypt.org/t/acme-v2-production-environment-wildcards/55578" target="_blank" rel="noopener">ACME v2 Production Environment &amp; Wildcards</a></li>
+<li><a href="https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579">ACME v2 and Wildcard Certificate Support is Live</a></li>
+<li><a href="https://community.letsencrypt.org/t/acme-v2-production-environment-wildcards/55578">ACME v2 Production Environment &amp; Wildcards</a></li>
 </ul>
-<p>Let’s Encrypt 建议大多数使用shell访问的人使用 Certbot ACME客户端。它可以自动执行证书颁发和安装，而不会停机,也为不想自动配置的人提供专家模式。它很容易使用，适用于许多操作系统，并且具有出色的文档。访问<a href="https://certbot.eff.org/" target="_blank" rel="noopener">Certbot站点</a>以获取适用于您的操作系统和Web服务器的定制说明。这个网址列举了不同的ACME客户端：<a href="https://letsencrypt.org/docs/client-options/" target="_blank" rel="noopener">client-options</a></p>
+<p>Let’s Encrypt 建议大多数使用shell访问的人使用 Certbot ACME客户端。它可以自动执行证书颁发和安装，而不会停机,也为不想自动配置的人提供专家模式。它很容易使用，适用于许多操作系统，并且具有出色的文档。访问<a href="https://certbot.eff.org/">Certbot站点</a>以获取适用于您的操作系统和Web服务器的定制说明。这个网址列举了不同的ACME客户端：<a href="https://letsencrypt.org/docs/client-options/">client-options</a></p>
 <p>唯一不好的地方在于，Let’s Encrypt 证书的持续时间只有3个月，所以证书快到期了需要我们renew一下。</p>
-<h3 id="Certbot"><a href="#Certbot" class="headerlink" title="Certbot"></a>Certbot</h3><p>由于从<a href="https://certbot.eff.org/" target="_blank" rel="noopener">Certbot站点</a>上获取的客户端，有些暂时不支持<code>v2</code>协议，所以我推荐用Certbot提供的<code>certbot-auto</code>脚本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.eff.org/certbot-auto</span><br><span class="line">chmod a+x certbot-auto</span><br></pre></td></tr></table></figure></p>
-<p>或者直接去<a href="https://github.com/certbot/certbot" target="_blank" rel="noopener">github.com</a>下载最新的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/certbot/certbot</span><br><span class="line">cd certbot</span><br><span class="line">chmod a+x certbot-auto</span><br></pre></td></tr></table></figure></p>
+<h3 id="Certbot"><a href="#Certbot" class="headerlink" title="Certbot"></a>Certbot</h3><p>由于从<a href="https://certbot.eff.org/">Certbot站点</a>上获取的客户端，有些暂时不支持<code>v2</code>协议，所以我推荐用Certbot提供的<code>certbot-auto</code>脚本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.eff.org/certbot-auto</span><br><span class="line">chmod a+x certbot-auto</span><br></pre></td></tr></table></figure></p>
+<p>或者直接去<a href="https://github.com/certbot/certbot">github.com</a>下载最新的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/certbot/certbot</span><br><span class="line">cd certbot</span><br><span class="line">chmod a+x certbot-auto</span><br></pre></td></tr></table></figure></p>
 <p>获取完整的命令行帮助，你可以输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./certbot-auto --help all</span><br></pre></td></tr></table></figure></p>
 <p>客户在申请 Let’s Encrypt 证书的时候，需要校验域名的所有权，证明操作者有权利为该域名申请证书，目前支持三种验证方式：</p>
 <ul>
@@ -230,7 +232,7 @@
 <p>引用:</p>
 <blockquote>
 <ul>
-<li><a href="https://www.jianshu.com/p/c5c9d071e395" target="_blank" rel="noopener">Let’s Encrypt 终于支持通配符证书了</a></li>
+<li><a href="https://www.jianshu.com/p/c5c9d071e395">Let’s Encrypt 终于支持通配符证书了</a></li>
 </ul>
 </blockquote>
 

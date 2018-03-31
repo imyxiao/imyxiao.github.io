@@ -38,6 +38,8 @@
 <![endif]-->
 <meta charset="utf-8">
 
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
@@ -186,7 +188,7 @@
 <p><code>spring-boot-devtools</code>这个依赖帮助我们在开发的时候使用LiveReload或者Hot swapping，但是正式环境中用不到它（也有用但是我用不着），所以就没必要将这个依赖打入jar中，我将其设置为<code>&lt;scope&gt;provided&lt;/scope&gt;</code>，但是生成executable jar中依旧含有这个jar包。</p>
 <p><img src="/java/Spring-Boot-exclude-dependency/spring_boot_devtools_in_jar.png" alt="Spring-Boot-exclude-dependency"></p>
 <p>我们使用Spring Boot时，都会使用<code>Spring Boot Maven Plugin</code>插件，其中的一个作用通过<code>spring-boot:repackage</code>生成一个可执行的jar或者war。一个可执行的jar当中必然包含servlet容器，如默认的tomcat，所以<code>repackage</code>设计成：即使dependencies的scope为<code>provided</code>，依旧会将依赖打入jar当中。</p>
-<p>为了可以excluded dependencies from the executable jar，所以<code>Spring Boot Maven Plugin</code>可以通过配置去排除依赖<a href="http://docs.spring.io/spring-boot/docs/current/maven-plugin/examples/exclude-dependency.html" title="exclude dependency" target="_blank" rel="noopener">exclude dependency</a></p>
+<p>为了可以excluded dependencies from the executable jar，所以<code>Spring Boot Maven Plugin</code>可以通过配置去排除依赖<a href="http://docs.spring.io/spring-boot/docs/current/maven-plugin/examples/exclude-dependency.html" title="exclude dependency">exclude dependency</a></p>
 <ul>
 <li>通过特定的<code>groupId</code>和<code>artifactId</code>来排除 (有的依赖还有<code>classifier</code>)</li>
 <li>通过指定<code>artifactId</code>来排除：任何符合给定的<code>artifactId</code>都被排除</li>

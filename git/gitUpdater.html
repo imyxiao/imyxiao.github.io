@@ -38,6 +38,8 @@
 <![endif]-->
 <meta charset="utf-8">
 
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
@@ -177,10 +179,10 @@
             
         </div>
         <div class="post-content markdown-body">
-            <p>每天上班前会所有的代码git pull，保持项目是最新的，但是由于公司使用的架构(thrift微服务)，导致项目特别多，一个项目一个项目的git pull挺麻烦的，于是在想有没有一个好的办法，一次性更新所有的项目。于是在网上搜索发现了<a href="https://github.com/earwig/git-repo-updater" title="gitup" target="_blank" rel="noopener">git-repo-updater</a>这个小工具。<br><a id="more"></a><br><strong>gitup</strong> (the <em>git-repo-updater</em>)</p>
+            <p>每天上班前会所有的代码git pull，保持项目是最新的，但是由于公司使用的架构(thrift微服务)，导致项目特别多，一个项目一个项目的git pull挺麻烦的，于是在想有没有一个好的办法，一次性更新所有的项目。于是在网上搜索发现了<a href="https://github.com/earwig/git-repo-updater" title="gitup">git-repo-updater</a>这个小工具。<br><a id="more"></a><br><strong>gitup</strong> (the <em>git-repo-updater</em>)</p>
 <p>gitup is a tool designed to update a large number of git repositories at once.<br>It is smart enough to handle multiple remotes, branches, dirty working<br>directories, and more, hopefully providing a great way to get everything<br>up-to-date for short periods of internet access between long periods of none.</p>
 <p>gitup should work on OS X, Linux, and Windows. You should have the latest<br>version of git and either Python 2.7 or Python 3 installed.<br><!-- more --> </p>
-<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><p>With <a href="http://brew.sh/" target="_blank" rel="noopener">Homebrew</a>:</p>
+<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><p>With <a href="http://brew.sh/">Homebrew</a>:</p>
 <pre><code>brew install gitup
 </code></pre><h2 id="From-source"><a href="#From-source" class="headerlink" title="From source"></a>From source</h2><p>First:</p>
 <pre><code>git clone git://github.com/earwig/git-repo-updater.git

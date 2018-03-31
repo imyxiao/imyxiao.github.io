@@ -38,6 +38,8 @@
 <![endif]-->
 <meta charset="utf-8">
 
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
@@ -190,7 +192,7 @@
     &lt;thymeleaf.version&gt;3.0.2.RELEASE&lt;/thymeleaf.version&gt;
     &lt;thymeleaf-layout-dialect.version&gt;2.1.1&lt;/thymeleaf-layout-dialect.version&gt;
 &lt;/properties&gt;
-</code></pre><h2 id="thymeleaf-3"><a href="#thymeleaf-3" class="headerlink" title="thymeleaf 3"></a>thymeleaf 3</h2><p>Thymeleaf3完全兼容Thymeleaf2，升级到Thymeleaf3的过程中，我只用到的部分特性，参考地址：<a href="http://www.thymeleaf.org/doc/articles/thymeleaf3migration.html" title="Thymeleaf 3 迁移指南" target="_blank" rel="noopener">Thymeleaf 3 迁移指南</a>。</p>
+</code></pre><h2 id="thymeleaf-3"><a href="#thymeleaf-3" class="headerlink" title="thymeleaf 3"></a>thymeleaf 3</h2><p>Thymeleaf3完全兼容Thymeleaf2，升级到Thymeleaf3的过程中，我只用到的部分特性，参考地址：<a href="http://www.thymeleaf.org/doc/articles/thymeleaf3migration.html" title="Thymeleaf 3 迁移指南">Thymeleaf 3 迁移指南</a>。</p>
 <h3 id="1-Full-HTML5-markup-support（完整的HTML5-标记支持）"><a href="#1-Full-HTML5-markup-support（完整的HTML5-标记支持）" class="headerlink" title="1.Full HTML5 markup support（完整的HTML5 标记支持）"></a>1.Full HTML5 markup support（完整的HTML5 标记支持）</h3><p>Thymeleaf 2.1中，html代码必须严格遵守XML规范，必须是<strong>XML-well-formed HTML5 code</strong>，比如：</p>
 <ol>
 <li>标签必须闭合，<code>&lt;br&gt;</code> 是错误的</li>
@@ -255,7 +257,7 @@
 
 &lt;/head&gt;
 ...
-</code></pre><p>这个特性解决了通用的header和footer的问题，详细说明参考：<a href="https://github.com/thymeleaf/thymeleaf/issues/451" title="Fragment Expressions" target="_blank" rel="noopener">https://github.com/thymeleaf/thymeleaf/issues/451</a></p>
+</code></pre><p>这个特性解决了通用的header和footer的问题，详细说明参考：<a href="https://github.com/thymeleaf/thymeleaf/issues/451" title="Fragment Expressions">https://github.com/thymeleaf/thymeleaf/issues/451</a></p>
 <h3 id="4-Decoupled-Template-Logic（模板逻辑解耦）"><a href="#4-Decoupled-Template-Logic（模板逻辑解耦）" class="headerlink" title="4.Decoupled Template Logic（模板逻辑解耦）"></a>4.Decoupled Template Logic（模板逻辑解耦）</h3><p>定义一个完全的html模版<code>home.html</code></p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -282,7 +284,7 @@
     &lt;/attr&gt;
   &lt;/attr&gt;
 &lt;/thlogic&gt;
-</code></pre><p>这样前端人员写的html与后端代码完全解耦，详细说明参考：<a href="https://github.com/thymeleaf/thymeleaf/issues/465" title="Decoupled template logic" target="_blank" rel="noopener">https://github.com/thymeleaf/thymeleaf/issues/465</a></p>
+</code></pre><p>这样前端人员写的html与后端代码完全解耦，详细说明参考：<a href="https://github.com/thymeleaf/thymeleaf/issues/465" title="Decoupled template logic">https://github.com/thymeleaf/thymeleaf/issues/465</a></p>
 
         </div>
         <!--<div class="post-tool">
