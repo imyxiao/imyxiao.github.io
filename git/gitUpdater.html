@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=https://blog.imyxiao.com/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=https://blog.imyxiao.com">
+<meta name="author" content="肖哥">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+<link rel="shortcut icon" href="/favicon.jpg">
+
+
+<title>批量更新git代码库 - 叫我肖哥就好了</title>
+
+<meta name="keywords" content="程序猿,java">
+
+<meta name="description " content="每天上班前会所有的代码git pull，保持项目是最新的，但是由于公司使用的架构(thrift微服务)，导致项目特别多，一个项目一个项目的git pull挺麻烦的，于是在想有没有一个好的办法，一次性更新所有的项目。">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="肖">肖</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <!--<a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>-->
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <img class="avatar" width="72" src="/yxiao.jpg" alt="avatar"/>
+        
+        <h1 class="cover-siteName">肖哥</h1>
+        <h3 class="cover-siteTitle">Don&#39;t Worry Be Happy~</h3>
+        <p class="cover-siteDesc"></p>
+        <div class="cover-sns">
+            
+            <div class="btn btn-instagram">
+                <a href="https://www.instagram.com/xiaoge0523/" target="_blank" title="instagram" ref="friend">
+                    <i class="fa fa-instagram"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-github">
+                <a href="https://github.com/imyxiao" target="_blank" title="github" ref="friend">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-twitter">
+                <a href="https://twitter.com/imyxiao" target="_blank" title="twitter" ref="friend">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最新</a></li>
+        
+            
+                <li class="">
+                    <a href="/categories/java" data-name="java">java</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">请输入关键字</label>
+        <input class="search-field" type="text" name="s" class="text" placeholder="请输入关键字" />
+        <button type="submit" class="search-form-submit" title="搜索"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://blog.imyxiao.com" target="_blank">
+                    <img width="48" src="/yxiao.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://blog.imyxiao.com/about" target="_blank">肖哥</a>
+                    <span title="最后编辑于2016-07-21">2016-07-21</span>
+                </p>
+                <p>Java Developer</p>
+            </div>
+            <h2 class="post-title">批量更新Git代码库</h2>
+            
+            <div class="post-meta">
+                本文总共2960个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+            
+        </div>
+        <div class="post-content markdown-body">
+            <p>每天上班前会所有的代码git pull，保持项目是最新的，但是由于公司使用的架构(thrift微服务)，导致项目特别多，一个项目一个项目的git pull挺麻烦的，于是在想有没有一个好的办法，一次性更新所有的项目。于是在网上搜索发现了<a href="https://github.com/earwig/git-repo-updater" title="gitup" target="_blank" rel="noopener">git-repo-updater</a>这个小工具。<br><a id="more"></a><br><strong>gitup</strong> (the <em>git-repo-updater</em>)</p>
+<p>gitup is a tool designed to update a large number of git repositories at once.<br>It is smart enough to handle multiple remotes, branches, dirty working<br>directories, and more, hopefully providing a great way to get everything<br>up-to-date for short periods of internet access between long periods of none.</p>
+<p>gitup should work on OS X, Linux, and Windows. You should have the latest<br>version of git and either Python 2.7 or Python 3 installed.<br><!-- more --> </p>
+<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><p>With <a href="http://brew.sh/" target="_blank" rel="noopener">Homebrew</a>:</p>
+<pre><code>brew install gitup
+</code></pre><h2 id="From-source"><a href="#From-source" class="headerlink" title="From source"></a>From source</h2><p>First:</p>
+<pre><code>git clone git://github.com/earwig/git-repo-updater.git
+cd git-repo-updater
+</code></pre><p>Then, to install for everyone:</p>
+<pre><code>sudo python setup.py install
+</code></pre><p>…or for just yourself (make sure you have <code>~/.local/bin</code> in your PATH):</p>
+<pre><code>python setup.py install --user
+</code></pre><p>Finally, simply delete the <code>git-repo-updater</code> directory, and you’re done!</p>
+<p><strong>Note:</strong> If you are using Windows, you may wish to add a macro so you can<br>invoke gitup in any directory. Note that <code>C:\python27\</code> refers to the<br>directory where Python is installed:</p>
+<pre><code>DOSKEY gitup=c:\python27\python.exe c:\python27\Scripts\gitup $*
+</code></pre><h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p>There are two ways to update repos: you can pass them as command arguments,<br>or save them as “bookmarks”.</p>
+<p>For example:</p>
+<pre><code>gitup ~/repos/foo ~/repos/bar ~/repos/baz
+</code></pre><p>will automatically pull to the <code>foo</code>, <code>bar</code>, and <code>baz</code> git repositories.<br>Additionally, you can just type:</p>
+<pre><code>gitup ~/repos
+</code></pre><p>to automatically update all git repositories in that directory.</p>
+<p>To add a bookmark (or bookmarks), either of these will work:</p>
+<pre><code>gitup --add ~/repos/foo ~/repos/bar ~/repos/baz
+gitup --add ~/repos
+</code></pre><p>Then, to update all of your bookmarks, just run gitup without args:</p>
+<pre><code>gitup
+</code></pre><p>Delete a bookmark:</p>
+<pre><code>gitup --delete ~/repos
+</code></pre><p>View your current bookmarks:</p>
+<pre><code>gitup --list
+</code></pre><p>You can mix and match bookmarks and command arguments:</p>
+<pre><code>gitup --add ~/repos/foo ~/repos/bar
+gitup ~/repos/baz            # update &apos;baz&apos; only
+gitup                        # update &apos;foo&apos; and &apos;bar&apos; only
+gitup ~/repos/baz --update   # update all three!
+</code></pre><p>Update all git repositories in your current directory:</p>
+<pre><code>gitup .
+</code></pre><p>By default, gitup will fetch all remotes in a repository. Pass <code>--current-only</code><br>(or <code>-c</code>) to make it fetch <em>only</em> the remote tracked by the current branch.</p>
+<p>Also by default, gitup will try to fast-forward all branches that have<br>upstreams configured. It will always skip branches where this is not possible<br>(e.g. dirty working directory or a merge/rebase is required). Pass<br><code>--fetch-only</code> (or <code>-f</code>) to only fetch remotes.</p>
+<p>After fetching, gitup will <em>keep</em> remote-tracking branches that no longer exist<br>upstream. Pass <code>--prune</code> (or <code>-p</code>) to delete them, or set <code>fetch.prune</code> or<br><code>remote.&lt;name&gt;.prune</code> in git config to do this by default.</p>
+<p>For a full list of all command arguments and abbreviations:</p>
+<pre><code>gitup --help
+</code></pre><p>Finally, all paths can be either absolute (e.g. <code>/path/to/repo</code>) or relative<br>(e.g. <code>../my/repo</code>).</p>
+
+        </div>
+        <!--<div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>-->
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/git/">git</a>
+            
+        </div>
+        
+    </article>
+    
+    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<div id="gitment-container"></div>
+<script type="text/javascript">
+    var gitment = new Gitment({
+        id: "Thu Jul 21 2016 16:36:45 GMT+0800",
+        owner: 'imyxiao',
+        repo: 'imyxiao.github.io',
+        oauth: {
+            client_id: '68c7081728138bb270e7',
+            client_secret: '52077d59beb29e6557a80a9b4307dd0346f8a284',
+        }
+    });
+    gitment.render('gitment-container');
+</script>
+
+<script>
+    var gbtn = document.getElementById("gitment-display-button");
+    if(gbtn!=undefined)gbtn.style.display = "none";
+    document.getElementById("gitment-container").style.display = "block";
+</script>
+
+
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            <a href="/about"  title="关于本站">关于本站</a>&nbsp;<em>·</em>&nbsp;
+            <!-- 自定义链接 -->
+            <!--<a href="/help" title="help" >急救中心</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp-->
+            <a href="/links" title="友情链接">友情链接</a>&nbsp;<em>·</em>&nbsp;
+            <!--<a href="/app" title="App下载">App下载</a>-->
+        </p>
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/about" id="siteBuildingTime"></a>天<br/>
+            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+        </p>
+        
+<!-- Tencent Analytics -->
+<script type="text/javascript" src="//tajs.qq.com/stats?sId=65550989" charset="UTF-8"></script>
+
+
+    </div>
+</footer>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '07/11/2016',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+        });
+    });
+</script>
+</body>
+</html>

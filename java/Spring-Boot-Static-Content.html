@@ -1,0 +1,313 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=https://blog.imyxiao.com/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=https://blog.imyxiao.com">
+<meta name="author" content="肖哥">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+<link rel="shortcut icon" href="/favicon.jpg">
+
+
+<title>spring boot静态资源处理 - 叫我肖哥就好了</title>
+
+<meta name="keywords" content="程序猿,java">
+
+<meta name="description " content="Spring Boot 静态资源处理，默认配置路径为 `classpath` 下的`/static` (或 `/public` 或 `/resources` 或 `/META-INF/resources`），即将`/**`映射到这几个路径下。Spring Boot 启动的时候，我们会看到如下日志">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="肖">肖</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <!--<a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>-->
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <img class="avatar" width="72" src="/yxiao.jpg" alt="avatar"/>
+        
+        <h1 class="cover-siteName">肖哥</h1>
+        <h3 class="cover-siteTitle">Don&#39;t Worry Be Happy~</h3>
+        <p class="cover-siteDesc"></p>
+        <div class="cover-sns">
+            
+            <div class="btn btn-instagram">
+                <a href="https://www.instagram.com/xiaoge0523/" target="_blank" title="instagram" ref="friend">
+                    <i class="fa fa-instagram"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-github">
+                <a href="https://github.com/imyxiao" target="_blank" title="github" ref="friend">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-twitter">
+                <a href="https://twitter.com/imyxiao" target="_blank" title="twitter" ref="friend">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最新</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/java" data-name="java">java</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">请输入关键字</label>
+        <input class="search-field" type="text" name="s" class="text" placeholder="请输入关键字" />
+        <button type="submit" class="search-form-submit" title="搜索"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://blog.imyxiao.com" target="_blank">
+                    <img width="48" src="/yxiao.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://blog.imyxiao.com/about" target="_blank">肖哥</a>
+                    <span title="最后编辑于2016-12-16">2016-12-16</span>
+                </p>
+                <p>Java Developer</p>
+            </div>
+            <h2 class="post-title">Spring Boot静态资源处理</h2>
+            
+            <div class="post-meta">
+                本文总共6254个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+            
+        </div>
+        <div class="post-content markdown-body">
+            <p>Spring Boot 静态资源处理，默认配置路径为 <code>classpath</code> 下的<code>/static</code> (或 <code>/public</code> 或 <code>/resources</code> 或 <code>/META-INF/resources</code>），即将<code>/**</code>映射到这几个路径下。Spring Boot 启动的时候，我们会看到如下日志：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2016-12-16 22:27:56 INFO 9812 - [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]</span><br><span class="line">2016-12-16 22:27:56 INFO 9812 - [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]</span><br><span class="line">2016-12-16 22:27:56 INFO 9812 - [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]</span><br></pre></td></tr></table></figure>
+<p>可以看到，Spring Boot 静态资源处理使用 Spring MVC 的<code>ResourceHttpRequestHandler</code>来实现。这里除了将<code>/**</code>映射到默认资源路径下，还为我们配置一个<code>favicon.ico</code>以及后面会讲到的<code>webjars</code>。Spring Boot中可以通过添加一个配置类，继承<code>WebMvcConfigurerAdapter</code>来自定义Spring MVC的配置，其中<code>addResourceHandlers</code>方法可以用来自定义静态资源处理，比如修改静态资源的缓存时间。这里我们想要替换默认的静态资源列表：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebMvcConfig</span> <span class="keyword">extends</span> <span class="title">WebMvcConfigurerAdapter</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> </span>&#123;</span><br><span class="line">        registry.addResourceHandler(<span class="string">"/**"</span>)</span><br><span class="line">                .addResourceLocations(<span class="string">"classpath:/mydir1/"</span>,<span class="string">"classpath:/mydir2/"</span>,<span class="string">"classpath:/mydir3/"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>此时，<code>/**</code>被映射到了<code>&quot;classpath:/mydir1/&quot;</code>,<code>&quot;classpath:/mydir2/&quot;</code>,<code>&quot;classpath:/mydir3/&quot;</code>下，要注意，如果替换了默认静态资源地址，那么默认欢迎页面<code>index.html</code>也将会被替换到我们自定义配置的任何路径下，Spring Boot相关的实现代码在<code>ResourceProperties</code>，这个类使用了<code>ConfigurationProperties</code>注解，前缀（prefix）为<code>spring.resources</code>，静态资源字段为<code>staticLocations</code>，那么我们也可以通过配置<code>spring.resources.staticLocations</code>这个properties来替换静态资源地址。</p>
+<hr>
+<a id="more"></a> 
+<h2 id="1-使用webjars"><a href="#1-使用webjars" class="headerlink" title="1.使用webjars"></a>1.使用webjars</h2><blockquote>
+<p>我们在Web开发中，前端页面中用了越来越多的JS或CSS，如jQuery等等，平时我们是将这些Web资源拷贝到Java的目录下，这种通过人工方式拷贝可能会产生版本误差，拷贝版本错误，前端页面就无法正确展示。 WebJars 就是为了解决这种问题衍生的，将这些Web前端资源打包成Java的Jar包，然后借助Maven这些依赖库的管理，保证这些Web资源版本唯一性，升级也比较容易。</p>
+</blockquote>
+<p>webjars中的资源所在路径为：<code>/META-INF/resources/webjars/</code>，其中<code>/META-INF/resources</code>是默认资源路径，从刚才的日志当中也可以看到，Spirng Boot为其配置一个<code>/webjars/**</code>的Url映射。我们可以去<a href="http://www.webjars.org/" title="http://www.webjars.org/" target="_blank" rel="noopener">http://www.webjars.org/</a> 找到我们想要的资源，将其依赖加入我们项目当中，即可使用这个资源了。例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.webjars<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jquery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里dependency的version即为静态资源的版本号，模板中（thymeleaf）使用:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">th:src</span>=<span class="string">"@&#123;/webjars/jquery/2.1.4/jquery.js&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="2-静态资源处理"><a href="#2-静态资源处理" class="headerlink" title="2.静态资源处理"></a>2.静态资源处理</h2><p>Spring Boot 为我们提供了 Spring MVC 中比较高级的静态资源处理方法，比如为webjars添加动态版本号、清除缓存的静态资源等。</p>
+<h3 id="2-1-为Webjars添加动态版本号"><a href="#2-1-为Webjars添加动态版本号" class="headerlink" title="2.1.为Webjars添加动态版本号"></a>2.1.为Webjars添加动态版本号</h3><p>实际开发当中，我们不可避免的需要升级第三方js、css库的版本，如果我们有100个页面，那么一个一个页面的去替换版本号显然不是个好方法，Spring Boot项目中我们只需要简单的添加<code>webjars-locator</code>依赖，即可为Webjars添加动态版本号管理。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.webjars<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>webjars-locator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>此依赖使用<code>spring-boot-dependencies</code>中统一管理的版本号，然后模板中就不需要写版本号了：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">th:src</span>=<span class="string">"@&#123;/webjars/jquery/jquery.js&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>生成的结果为：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">th:src</span>=<span class="string">"/webjars/jquery/2.1.4/jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>原理很简单，运行时使用<code>ResourceUrlEncodingFilter</code>这个过滤器，将<code>response</code>通过<code>HttpServletResponseWrapper</code>进行静态包装并重写<code>encodeURL</code>方法，然后模板中使用<code>response</code>的<code>encodeURL</code>将链接地址重写。并且一定要<strong>注意</strong>，<code>Thymeleaf</code> 和 <code>FreeMarker</code>这两个模板自动配置了<code>ResourceUrlEncodingFilter</code>，JSP则需要手动声明这个过滤器，而其它模板则需要自已去实现这个功能。下面说到的其它版本管理中，也是同理。</p>
+<p>此时，如果想要更换jquery版本号，只需修改jquery的webjars的dependency版本即可。</p>
+<h3 id="2-2-缓存清除"><a href="#2-2-缓存清除" class="headerlink" title="2.2.缓存清除"></a>2.2.缓存清除</h3><p>当静态资源发生变化时，为了清除用户客户端的缓存，我们一般会将静态资源加上版本号或者固定时间戮，每当资源变化时手动去更新版本或时间戳。比如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"/css/style.css?v=1.0.0"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这种方式也是需要我们一个页面一个页面的去修改，显然不合适。我们有更好的方式，Spring Boot中我们可以去配置<code>VersionResourceResolver</code>，它有两种策略：</p>
+<ul>
+<li>FixedVersionStrategy可以使用某项属性,或者日期,或者其它来作为版本.</li>
+<li>ContentVersionStrategy是使用资源内容计算出来的MD5哈希作为版本</li>
+</ul>
+<p>与Webjars添加动态版本号一样，这两种方式都借助了<code>ResourceUrlEncodingFilter</code>来重写模板中的URL。</p>
+<p>更详细配置可参考：Spring Framework’s<a href="http://docs.spring.io/spring/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/htmlsingle/#mvc-config-static-resources" title="Spring MVC的官方文档" target="_blank" rel="noopener"> reference documentation.</a></p>
+<h4 id="2-2-1-ContentVersionStrategy"><a href="#2-2-1-ContentVersionStrategy" class="headerlink" title="2.2.1.ContentVersionStrategy"></a>2.2.1.ContentVersionStrategy</h4><p>properties文件配置方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spring.resources.chain.strategy.content.enabled=true</span><br><span class="line">spring.resources.chain.strategy.content.paths=/**</span><br></pre></td></tr></table></figure></p>
+<p>同样也可以在继承<code>WebMvcConfigurerAdapter</code>的配置类中配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> </span>&#123;</span><br><span class="line">    registry.addResourceHandler(<span class="string">"/**"</span>)</span><br><span class="line">            .addResourceLocations(<span class="string">"classpath:/static/"</span>)</span><br><span class="line">            .resourceChain(<span class="keyword">true</span>)</span><br><span class="line">            .addResolver(<span class="keyword">new</span> VersionResourceResolver().addContentVersionStrategy(<span class="string">"/**"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置成功后，页面中的：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/css/style.css&#125;"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>会被替换为：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">th:href</span>=<span class="string">"/css/style-2a2d595e6ed9a0b24f027f2b63b134d6.css"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>文件的hash会被缓存，使用的是Spring的<code>ConcurrentMapCache</code>，一个简单的缓存实现，文件改动后，只有重启服务再次访问才会重新生成hash</p>
+<h4 id="2-2-2-FixedVersionStrategy"><a href="#2-2-2-FixedVersionStrategy" class="headerlink" title="2.2.2.FixedVersionStrategy"></a>2.2.2.FixedVersionStrategy</h4><p>在动态的加载静态资源时，比如javascript模块加截器，这时更改文件名不是个好选择，可以使用<code>FixedVersionStrategy</code>，用某项属性,或者日期,或者其它来作为版本。</p>
+<p>比如，在properties文件中这样配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">spring.resources.chain.strategy.content.enabled=true</span><br><span class="line">spring.resources.chain.strategy.content.paths=/**</span><br><span class="line">spring.resources.chain.strategy.fixed.enabled=true</span><br><span class="line">spring.resources.chain.strategy.fixed.paths=/js/lib/</span><br><span class="line">spring.resources.chain.strategy.fixed.version=v12</span><br></pre></td></tr></table></figure></p>
+<p>这样配置后, 位于 <code>&quot;/js/lib/&quot;</code>下的 JavaScript 将会使用一个固定的版本号<code>&quot;/v12/js/lib/mymodule.js&quot;</code> ，而其它的静态资源仍然使用文件hash的方式。</p>
+<p>同样可以在类中配置：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> </span>&#123;</span><br><span class="line">    registry.addResourceHandler(<span class="string">"/**"</span>)</span><br><span class="line">            .addResourceLocations(<span class="string">"classpath:/static/"</span>)</span><br><span class="line">            .resourceChain(<span class="keyword">true</span>)</span><br><span class="line">            .addResolver(<span class="keyword">new</span> VersionResourceResolver()</span><br><span class="line">                                    .addFixedVersionStrategy(<span class="string">"v12"</span>, <span class="string">"/js/lib/"</span>)</span><br><span class="line">                                    .addContentVersionStrategy(<span class="string">"/**"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-3-URL中含有”-”字符的问题"><a href="#2-3-URL中含有”-”字符的问题" class="headerlink" title="2.3.URL中含有”#”字符的问题"></a>2.3.URL中含有”#”字符的问题</h3><p>查看<code>ResourceUrlEncodingFilter</code>这个过滤器，发现当URL中含有”?”,比如<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">th:src</span>=<span class="string">"@&#123;/jquery.js?v=1&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><code>response</code>的<code>encodeURL</code>执行时，会首先将”?”后面的部分<code>?v=1</code>去掉，然后再根据<code>/jquery.js</code>去资源目录去查找文件<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getQueryParamsIndex</span><span class="params">(String url)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> index = url.indexOf(<span class="string">"?"</span>);</span><br><span class="line">	<span class="keyword">return</span> (index &gt; <span class="number">0</span> ? index : url.length());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果URL中有其它字符，比如<code>/jquery.js#1</code>，<code>encodeURL</code>执行时会拿着<code>/jquery.js#1</code>去查找文件，这样当然找不到，所以导致没法配置资源缓存清除这个功能了。</p>
+<p>至于为什么我会遇到资源文件的URL中有”#”字符的情况呢？<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">use</span> <span class="attr">xlink:href</span>=<span class="string">"/svg-symbols.svg#grbs"</span>&gt;</span><span class="tag">&lt;/<span class="name">use</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>我们公司前端的svg引用就是这样写的，将很多svg放在一个文件中，通过”#”选择调用。</p>
+<p>于是我重写了<code>ResourceUrlEncodingFilter</code>过滤器，添加”#”的判断，并优化了文件URL缓存。</p>
+
+        </div>
+        <!--<div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>-->
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/static/">static</a>
+            
+            <a href="/tags/webjars/">webjars</a>
+            
+            <a href="/tags/springboot/">springboot</a>
+            
+        </div>
+        
+    </article>
+    
+    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<div id="gitment-container"></div>
+<script type="text/javascript">
+    var gitment = new Gitment({
+        id: "Fri Dec 16 2016 22:19:58 GMT+0800",
+        owner: 'imyxiao',
+        repo: 'imyxiao.github.io',
+        oauth: {
+            client_id: '68c7081728138bb270e7',
+            client_secret: '52077d59beb29e6557a80a9b4307dd0346f8a284',
+        }
+    });
+    gitment.render('gitment-container');
+</script>
+
+<script>
+    var gbtn = document.getElementById("gitment-display-button");
+    if(gbtn!=undefined)gbtn.style.display = "none";
+    document.getElementById("gitment-container").style.display = "block";
+</script>
+
+
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            <a href="/about"  title="关于本站">关于本站</a>&nbsp;<em>·</em>&nbsp;
+            <!-- 自定义链接 -->
+            <!--<a href="/help" title="help" >急救中心</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp-->
+            <a href="/links" title="友情链接">友情链接</a>&nbsp;<em>·</em>&nbsp;
+            <!--<a href="/app" title="App下载">App下载</a>-->
+        </p>
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/about" id="siteBuildingTime"></a>天<br/>
+            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+        </p>
+        
+<!-- Tencent Analytics -->
+<script type="text/javascript" src="//tajs.qq.com/stats?sId=65550989" charset="UTF-8"></script>
+
+
+    </div>
+</footer>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '07/11/2016',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+        });
+    });
+</script>
+</body>
+</html>

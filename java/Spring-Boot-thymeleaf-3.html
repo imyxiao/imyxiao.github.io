@@ -1,0 +1,374 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=https://blog.imyxiao.com/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=https://blog.imyxiao.com">
+<meta name="author" content="肖哥">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+<link rel="shortcut icon" href="/favicon.jpg">
+
+
+<title>springboot使用thymeleaf 3 - 叫我肖哥就好了</title>
+
+<meta name="keywords" content="程序猿,java">
+
+<meta name="description " content="如果你的spring boot应用继承`spring-boot-starter-parent`，那么只需要添加`spring-boot-starter-thymeleaf`这个starter依赖，即可使用thymeleaf模板引擎">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="肖">肖</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <!--<a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>-->
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <img class="avatar" width="72" src="/yxiao.jpg" alt="avatar"/>
+        
+        <h1 class="cover-siteName">肖哥</h1>
+        <h3 class="cover-siteTitle">Don&#39;t Worry Be Happy~</h3>
+        <p class="cover-siteDesc"></p>
+        <div class="cover-sns">
+            
+            <div class="btn btn-instagram">
+                <a href="https://www.instagram.com/xiaoge0523/" target="_blank" title="instagram" ref="friend">
+                    <i class="fa fa-instagram"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-github">
+                <a href="https://github.com/imyxiao" target="_blank" title="github" ref="friend">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-twitter">
+                <a href="https://twitter.com/imyxiao" target="_blank" title="twitter" ref="friend">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最新</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/java" data-name="java">java</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">请输入关键字</label>
+        <input class="search-field" type="text" name="s" class="text" placeholder="请输入关键字" />
+        <button type="submit" class="search-form-submit" title="搜索"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://blog.imyxiao.com" target="_blank">
+                    <img width="48" src="/yxiao.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://blog.imyxiao.com/about" target="_blank">肖哥</a>
+                    <span title="最后编辑于2016-11-26">2016-11-26</span>
+                </p>
+                <p>Java Developer</p>
+            </div>
+            <h2 class="post-title">SpringBoot使用thymeleaf 3</h2>
+            
+            <div class="post-meta">
+                本文总共4821个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+            
+        </div>
+        <div class="post-content markdown-body">
+            <p>如果你的spring boot应用继承<code>spring-boot-starter-parent</code>，那么只需要添加<code>spring-boot-starter-thymeleaf</code>这个starter依赖，即可使用thymeleaf模板引擎</p>
+<pre><code>&lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre><a id="more"></a> 
+<h2 id="升级为thymeleaf-3"><a href="#升级为thymeleaf-3" class="headerlink" title="升级为thymeleaf 3"></a>升级为thymeleaf 3</h2><p>从<code>spring-boot-dependencies</code>中的<code>dependencyManagement</code>中可以看到：<code>spring-boot-starter-thymeleaf</code>，默认使用Thymeleaf 2.1</p>
+<p><img src="/java/Spring-Boot-thymeleaf-3/Thymeleaf2.1.png" alt="jodd_beancopy_converter"></p>
+<p>如果要改为Thymeleaf 3，只需要重写<code>thymeleaf.version</code>和<code>thymeleaf-layout-dialect.version</code>两个properties</p>
+<pre><code>&lt;properties&gt;
+    &lt;thymeleaf.version&gt;3.0.2.RELEASE&lt;/thymeleaf.version&gt;
+    &lt;thymeleaf-layout-dialect.version&gt;2.1.1&lt;/thymeleaf-layout-dialect.version&gt;
+&lt;/properties&gt;
+</code></pre><h2 id="thymeleaf-3"><a href="#thymeleaf-3" class="headerlink" title="thymeleaf 3"></a>thymeleaf 3</h2><p>Thymeleaf3完全兼容Thymeleaf2，升级到Thymeleaf3的过程中，我只用到的部分特性，参考地址：<a href="http://www.thymeleaf.org/doc/articles/thymeleaf3migration.html" title="Thymeleaf 3 迁移指南" target="_blank" rel="noopener">Thymeleaf 3 迁移指南</a>。</p>
+<h3 id="1-Full-HTML5-markup-support（完整的HTML5-标记支持）"><a href="#1-Full-HTML5-markup-support（完整的HTML5-标记支持）" class="headerlink" title="1.Full HTML5 markup support（完整的HTML5 标记支持）"></a>1.Full HTML5 markup support（完整的HTML5 标记支持）</h3><p>Thymeleaf 2.1中，html代码必须严格遵守XML规范，必须是<strong>XML-well-formed HTML5 code</strong>，比如：</p>
+<ol>
+<li>标签必须闭合，<code>&lt;br&gt;</code> 是错误的</li>
+<li>属性必须有值，<code>&lt;span v-cloak/&gt;</code> 是不被允许的</li>
+</ol>
+<p>不是所有的人都会完全的遵守XML规范，Thymeleaf2中要解决这个问题，可以将<code>spring.thymeleaf.mode</code>这个属性改为<code>LEGACYHTML5</code>，然后添加<code>nekoHTML</code>这个库。如果使用Thymeleaf3，就不会存在这个问题，因为Thymeleaf3使用新的解析引擎。</p>
+<h3 id="2-Template-modes（模板类型）"><a href="#2-Template-modes（模板类型）" class="headerlink" title="2.Template modes（模板类型）"></a>2.Template modes（模板类型）</h3><ul>
+<li>HTML、XML、TEXT、JAVASCRIPT、CSS、RAW</li>
+</ul>
+<p>分为三类：标记型模板（HTML，XML）,文本型模板(TEXT, JAVASCRIPT和CSS)，无操作(no-op)模板 (RAW)。</p>
+<ul>
+<li>Thymeleaf2.1中的<code>HTML5</code>, <code>XHTML</code>, <code>VALIDXHTML</code>和<code>LEGACYHTML5</code>相当于3.0中的 <code>HTML</code></li>
+<li>Thymeleaf2.1中的<code>VALIDXML</code>也就是3.0中的<code>XML</code></li>
+</ul>
+<p>所以在Thymeleaf3中使用<code>HTML</code>包括了HTML5，HTML4和XHTML在内的所有类型的HTML标记，此时，标记的作用范围按可能的最大化处理。</p>
+<p>spring boot需要将默认的<code>HTML5</code>改为<code>HTML</code>，在application.properties文件中增加：<code>spring.thymeleaf.mode=HTML</code></p>
+<h5 id="Improved-inlining-mechanism（增强的内联机制）"><a href="#Improved-inlining-mechanism（增强的内联机制）" class="headerlink" title="Improved inlining mechanism（增强的内联机制）"></a>Improved inlining mechanism（增强的内联机制）</h5><p>Thymeleaf3中可无需额外的标签，直接在文本中输出数据</p>
+<pre><code>&lt;p&gt;This product is called [[${product.name}]] and it&apos;s great!&lt;/p&gt;
+</code></pre><p>Thymeleaf2.1中则需要使用内联标签<code>th:inline</code></p>
+<pre><code>&lt;p th:inline=&quot;text&quot;&gt;
+   This product is called [[${product.name}]] and it&apos;s great!
+&lt;/p&gt;
+</code></pre><p>上面的代码中也可以使用<code>[(${product.name)]</code>来代替，<code>[[...]]</code>和<code>[(...)]</code>区别在于<code>[(...)]</code>中的文本不会被Escape，就相当于<code>th:text</code>和<code>th:utext</code>的区别</p>
+<h3 id="3-Fragment-Expressions（片段表达式）"><a href="#3-Fragment-Expressions（片段表达式）" class="headerlink" title="3.Fragment Expressions（片段表达式）"></a>3.Fragment Expressions（片段表达式）</h3><p>Thymeleaf 3.0 引入了一个新的Fragment Expressions。像是这样：<code>~{commons::footer}</code>。例如，我们定义一个模版页面base.html</p>
+<pre><code>&lt;head th:fragment=&quot;common_header(title,links)&quot;&gt;
+
+  &lt;title th:utext=&quot;${title}&quot;&gt;The awesome application&lt;/title&gt;
+
+  &lt;!-- Common styles and scripts --&gt;
+  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;all&quot; th:href=&quot;@{/css/awesomeapp.css}&quot;&gt;
+  &lt;link rel=&quot;shortcut icon&quot; th:href=&quot;@{/images/favicon.ico}&quot;&gt;
+  &lt;script type=&quot;text/javascript&quot; th:src=&quot;@{/sh/scripts/codebase.js}&quot;&gt;&lt;/script&gt;
+
+  &lt;!--/* Per-page placeholder for additional links */--&gt;
+  &lt;th:block th:replace=&quot;${links} ?: ~{}&quot; /&gt;
+
+&lt;/head&gt;
+</code></pre><p>在我们页面中使用这个模板</p>
+<pre><code>...
+&lt;head th:replace=&quot;base :: common_header(~{::title},~{::link})&quot;&gt;
+
+  &lt;title&gt;Awesome - Main&lt;/title&gt;
+
+  &lt;link rel=&quot;stylesheet&quot; th:href=&quot;@{/css/bootstrap.min.css}&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; th:href=&quot;@{/themes/smoothness/jquery-ui.css}&quot;&gt;
+
+&lt;/head&gt;
+...
+</code></pre><p>结果会输出：</p>
+<pre><code>...
+&lt;head&gt;
+
+  &lt;title&gt;Awesome - Main&lt;/title&gt;
+
+  &lt;!-- Common styles and scripts --&gt;
+  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;all&quot; href=&quot;/awe/css/awesomeapp.css&quot;&gt;
+  &lt;link rel=&quot;shortcut icon&quot; href=&quot;/awe/images/favicon.ico&quot;&gt;
+  &lt;script type=&quot;text/javascript&quot; src=&quot;/awe/sh/scripts/codebase.js&quot;&gt;&lt;/script&gt;
+
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/awe/css/bootstrap.min.css&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/awe/themes/smoothness/jquery-ui.css&quot;&gt;
+
+&lt;/head&gt;
+...
+</code></pre><p>这个特性解决了通用的header和footer的问题，详细说明参考：<a href="https://github.com/thymeleaf/thymeleaf/issues/451" title="Fragment Expressions" target="_blank" rel="noopener">https://github.com/thymeleaf/thymeleaf/issues/451</a></p>
+<h3 id="4-Decoupled-Template-Logic（模板逻辑解耦）"><a href="#4-Decoupled-Template-Logic（模板逻辑解耦）" class="headerlink" title="4.Decoupled Template Logic（模板逻辑解耦）"></a>4.Decoupled Template Logic（模板逻辑解耦）</h3><p>定义一个完全的html模版<code>home.html</code></p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;table id=&quot;usersTable&quot;&gt;
+      &lt;tr&gt;
+        &lt;td class=&quot;username&quot;&gt;Jeremy Grapefruit&lt;/td&gt;
+        &lt;td class=&quot;usertype&quot;&gt;Normal User&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td class=&quot;username&quot;&gt;Alice Watermelon&lt;/td&gt;
+        &lt;td class=&quot;usertype&quot;&gt;Administrator&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>然后只需要定义一个<code>home.th.xml</code></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;thlogic&gt;
+  &lt;attr sel=&quot;#usersTable&quot; th:remove=&quot;all-but-first&quot;&gt;
+    &lt;attr sel=&quot;/tr[0]&quot; th:each=&quot;user : ${users}&quot;&gt;
+      &lt;attr sel=&quot;td.username&quot; th:text=&quot;${user.name}&quot; /&gt;
+      &lt;attr sel=&quot;td.usertype&quot; th:text=&quot;#{|user.type.${user.type}|}&quot; /&gt;
+    &lt;/attr&gt;
+  &lt;/attr&gt;
+&lt;/thlogic&gt;
+</code></pre><p>这样前端人员写的html与后端代码完全解耦，详细说明参考：<a href="https://github.com/thymeleaf/thymeleaf/issues/465" title="Decoupled template logic" target="_blank" rel="noopener">https://github.com/thymeleaf/thymeleaf/issues/465</a></p>
+
+        </div>
+        <!--<div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>-->
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/springboot/">springboot</a>
+            
+            <a href="/tags/thymeleaf/">thymeleaf</a>
+            
+        </div>
+        
+    </article>
+    
+    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<div id="gitment-container"></div>
+<script type="text/javascript">
+    var gitment = new Gitment({
+        id: "Sat Nov 26 2016 17:26:00 GMT+0800",
+        owner: 'imyxiao',
+        repo: 'imyxiao.github.io',
+        oauth: {
+            client_id: '68c7081728138bb270e7',
+            client_secret: '52077d59beb29e6557a80a9b4307dd0346f8a284',
+        }
+    });
+    gitment.render('gitment-container');
+</script>
+
+<script>
+    var gbtn = document.getElementById("gitment-display-button");
+    if(gbtn!=undefined)gbtn.style.display = "none";
+    document.getElementById("gitment-container").style.display = "block";
+</script>
+
+
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            <a href="/about"  title="关于本站">关于本站</a>&nbsp;<em>·</em>&nbsp;
+            <!-- 自定义链接 -->
+            <!--<a href="/help" title="help" >急救中心</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp-->
+            <a href="/links" title="友情链接">友情链接</a>&nbsp;<em>·</em>&nbsp;
+            <!--<a href="/app" title="App下载">App下载</a>-->
+        </p>
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/about" id="siteBuildingTime"></a>天<br/>
+            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+        </p>
+        
+<!-- Tencent Analytics -->
+<script type="text/javascript" src="//tajs.qq.com/stats?sId=65550989" charset="UTF-8"></script>
+
+
+    </div>
+</footer>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '07/11/2016',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+        });
+    });
+</script>
+</body>
+</html>

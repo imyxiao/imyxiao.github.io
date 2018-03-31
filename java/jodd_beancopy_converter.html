@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=https://blog.imyxiao.com/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=https://blog.imyxiao.com">
+<meta name="author" content="肖哥">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+<link rel="shortcut icon" href="/favicon.jpg">
+
+
+<title>给jodd的beancopy注册converter - 叫我肖哥就好了</title>
+
+<meta name="keywords" content="程序猿,java">
+
+<meta name="description " content="公司的项目是微服务架构，使用facebook的thrift框架作为微服务之间rpc通信的协议，thrift是一个跨语言的服务框架。">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="肖">肖</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <!--<a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>-->
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <img class="avatar" width="72" src="/yxiao.jpg" alt="avatar"/>
+        
+        <h1 class="cover-siteName">肖哥</h1>
+        <h3 class="cover-siteTitle">Don&#39;t Worry Be Happy~</h3>
+        <p class="cover-siteDesc"></p>
+        <div class="cover-sns">
+            
+            <div class="btn btn-instagram">
+                <a href="https://www.instagram.com/xiaoge0523/" target="_blank" title="instagram" ref="friend">
+                    <i class="fa fa-instagram"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-github">
+                <a href="https://github.com/imyxiao" target="_blank" title="github" ref="friend">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-twitter">
+                <a href="https://twitter.com/imyxiao" target="_blank" title="twitter" ref="friend">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最新</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/java" data-name="java">java</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">请输入关键字</label>
+        <input class="search-field" type="text" name="s" class="text" placeholder="请输入关键字" />
+        <button type="submit" class="search-form-submit" title="搜索"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://blog.imyxiao.com" target="_blank">
+                    <img width="48" src="/yxiao.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://blog.imyxiao.com/about" target="_blank">肖哥</a>
+                    <span title="最后编辑于2016-11-25">2016-11-25</span>
+                </p>
+                <p>Java Developer</p>
+            </div>
+            <h2 class="post-title">给jodd的beancopy注册Converter</h2>
+            
+            <div class="post-meta">
+                本文总共2347个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+            
+        </div>
+        <div class="post-content markdown-body">
+            <p>公司的项目是微服务架构，使用facebook的thrift框架作为微服务之间rpc通信的协议，thrift是一个跨语言的服务框架。</p>
+<blockquote>
+<p>Thrift通过接口定义语言 (interface definition language，IDL) 来定义数据类型和服务，Thrift接口定义文件由Thrift代码编译器生成thrift目标语言的代码。</p>
+</blockquote>
+<p>Thrift编译器生成API文件，我们分别实现其server与client。在server端，将服务需要响应的数据（如数据库中查询所得）封装到thrift生成的java对象中序列化后返回，在client端收到之后，反序列化成thrift生成的java对象。thrift框架的序列化及反序列化使用的binary protocol，即二进制协议，速度快，性能高。</p>
+<a id="more"></a> 
+<h2 id="BeanCopy"><a href="#BeanCopy" class="headerlink" title="BeanCopy"></a>BeanCopy</h2><p>我们在使用Thrift的过程中，需要使用到两次java对象属性的复制：server端再将对象复制到thrift生成的java对象中，client端将thrift对象复制到自己的定义的java对象中。java中使用bean copy的工具类，比较多是的jodd的beanCopy与Apache的BeanUtils，我们用的jodd。将A对象复制到B对象，jodd的BeanCopy使用如下：</p>
+<pre><code>BeanCopy.beans(A, B).copy();
+</code></pre><p>然而由于thrift框架的基本数据类型中，没有java中的时间类型，即<code>java.util.Date</code>，我们会将时间定义为String或long类型。比较推荐使用long类型时间戳，但是之前代码中都使用的String类型，比较令人讨厌，旧的项目中大量的使用BeanCopy，这时候改动比较麻烦。</p>
+<p>那么使用String来表示时间，配置BeanCopy的Converter。</p>
+<h2 id="Converter"><a href="#Converter" class="headerlink" title="Converter"></a>Converter</h2><p>jodd中类型之间的转换大量的使用Converter，并且有一个”类型转换管理器”：<code>jodd.typeconverter.TypeConverterManager</code>。<code>TypeConverterManager</code>注册了大量的转换器。<br><img src="/java/jodd_beancopy_converter/typeConverterManager_register.png" alt="jodd_beancopy_converter"></p>
+<p>将Date转化为String,使用的是<code>jodd.typeconverter.impl.StringConverter</code></p>
+<p><img src="/java/jodd_beancopy_converter/StringConverter.png" alt="jodd_beancopy_converter"></p>
+<p>原理很简单，先判断被转换对象的类型，然后实现不同对象的转换，Date转换为String使用的是Date的toString方法</p>
+<p><img src="/java/jodd_beancopy_converter/date_toString.png" alt="jodd_beancopy_converter"></p>
+<p>被转化的String格式为：<code>&quot;EEE MMM dd HH:mm:ss zzz yyyy&quot;</code>，且Locale为US</p>
+<p>jodd中的使用<code>jodd.typeconverter.impl.DateConverter</code>将对象转化为Date</p>
+<p><img src="/java/jodd_beancopy_converter/DateConverter.png" alt="jodd_beancopy_converter"></p>
+<p>使用的默认格式为：<code>YYYY-MM-DD hh:mm:ss.mss</code> ，这时候我们有两种解决方案。</p>
+<ul>
+<li>在server端重新注册StringConverter，BeanCopy时就将Date转为<code>YYYY-MM-DD hh:mm:ss.mss</code>格式的String，client端会被转换为Date</li>
+<li>在client端重新注册DateConverter，BeanCopy时将”EEE MMM dd HH:mm:ss zzz yyyy”格式的String转换为Date</li>
+</ul>
+<p>DateConverter（项目启动后，执行即可）：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">TypeConverterManager.register(Date.class, value -&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (value == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value <span class="keyword">instanceof</span> Date) &#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value <span class="keyword">instanceof</span> Number) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Date(((Number) value).longValue());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        String stringValue = value.toString().trim();</span><br><span class="line">        SimpleDateFormat slf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"EEE MMM dd HH:mm:ss zzz yyyy"</span>, Locale.US);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> slf.parse(stringValue);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ParseException e) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>StringConverter类似，只需要增加一个Date类型的判断:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (value <span class="keyword">instanceof</span> Date) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> SimpleDateFormat(<span class="string">"YYYY-MM-DD hh:mm:ss.mss"</span>).format(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="thrift的binary类型"><a href="#thrift的binary类型" class="headerlink" title="thrift的binary类型"></a>thrift的binary类型</h2><p>公司有的项目直接使用thrift的binary做数据的返回类型，java中对应的是ByteBuffer。</p>
+<p>这时候我们需要自己实现对象的序列化与反序列化，比如说MessagePack，一种比JSON更快、更小的格式</p>
+<p>这时候就可以不用thrift生成的java对象了，也就不需要烦恼任何类型转换的问题了。</p>
+
+        </div>
+        <!--<div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>-->
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/springboot/">springboot</a>
+            
+            <a href="/tags/jodd/">jodd</a>
+            
+            <a href="/tags/beancopy/">beancopy</a>
+            
+        </div>
+        
+    </article>
+    
+    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<div id="gitment-container"></div>
+<script type="text/javascript">
+    var gitment = new Gitment({
+        id: "Fri Nov 25 2016 22:50:00 GMT+0800",
+        owner: 'imyxiao',
+        repo: 'imyxiao.github.io',
+        oauth: {
+            client_id: '68c7081728138bb270e7',
+            client_secret: '52077d59beb29e6557a80a9b4307dd0346f8a284',
+        }
+    });
+    gitment.render('gitment-container');
+</script>
+
+<script>
+    var gbtn = document.getElementById("gitment-display-button");
+    if(gbtn!=undefined)gbtn.style.display = "none";
+    document.getElementById("gitment-container").style.display = "block";
+</script>
+
+
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            <a href="/about"  title="关于本站">关于本站</a>&nbsp;<em>·</em>&nbsp;
+            <!-- 自定义链接 -->
+            <!--<a href="/help" title="help" >急救中心</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp-->
+            <a href="/links" title="友情链接">友情链接</a>&nbsp;<em>·</em>&nbsp;
+            <!--<a href="/app" title="App下载">App下载</a>-->
+        </p>
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/about" id="siteBuildingTime"></a>天<br/>
+            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+        </p>
+        
+<!-- Tencent Analytics -->
+<script type="text/javascript" src="//tajs.qq.com/stats?sId=65550989" charset="UTF-8"></script>
+
+
+    </div>
+</footer>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '07/11/2016',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+        });
+    });
+</script>
+</body>
+</html>
