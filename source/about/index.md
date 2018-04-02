@@ -27,12 +27,12 @@ Hi, I’m Yang Xiao~~
             "url": "https://github.com/imyxiao"
         },
         {
-            "name": "Github",
-            "url": "https://github.com/imyxiao"
-        },
-        {
             "name": "Twitter",
             "url": "https://twitter.com/imyxiao"
+        },
+        {
+            "name": "zhiwu",
+            "url": "https://www.zhihu.com/people/yangxiao91"
         }
     ]
 }
