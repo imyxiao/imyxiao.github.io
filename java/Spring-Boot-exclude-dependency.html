@@ -38,8 +38,6 @@
 <![endif]-->
 <meta charset="utf-8">
 
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
@@ -53,7 +51,7 @@
 
 <title>spring boot去除provided的依赖 - 叫我肖哥就好了</title>
 
-<meta name="keywords" content="程序猿,java">
+<meta name="keywords" content="程序猿">
 
 <meta name="description " content="Maven的Dependency scope是用来限制Dependency的作用范围的, 影响maven项目在各个生命周期时导入的package的状态。总共有6种范围，默认是`compile`，作用于整个生命周期。当scope设置为`provided`时，打包的时候可以不用包进去。该依赖理论上可以参与编译，测试，运行等周期，相当于compile，但是在打包阶段做了exclude的动作。">
 </head>
@@ -223,7 +221,7 @@
     
     
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
 <div id="gitment-container"></div>
 <script type="text/javascript">
     var gitment = new Gitment({
