@@ -21,11 +21,11 @@
             
             <tag> certificate </tag>
             
-            <tag> https </tag>
-            
             <tag> certbot </tag>
             
             <tag> letsencrypt </tag>
+            
+            <tag> https </tag>
             
         </tags>
       
@@ -48,15 +48,15 @@
       
         <tags>
             
+            <tag> certificate </tag>
+            
+            <tag> https </tag>
+            
             <tag> keystore </tag>
             
             <tag> pem </tag>
             
             <tag> nginx </tag>
-            
-            <tag> certificate </tag>
-            
-            <tag> https </tag>
             
         </tags>
       

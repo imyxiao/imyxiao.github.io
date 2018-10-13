@@ -36,11 +36,11 @@
     
       <category term="certificate" scheme="https://blog.imyxiao.com/tags/certificate/"/>
     
-      <category term="https" scheme="https://blog.imyxiao.com/tags/https/"/>
-    
       <category term="certbot" scheme="https://blog.imyxiao.com/tags/certbot/"/>
     
       <category term="letsencrypt" scheme="https://blog.imyxiao.com/tags/letsencrypt/"/>
+    
+      <category term="https" scheme="https://blog.imyxiao.com/tags/https/"/>
     
   </entry>
   
@@ -62,15 +62,15 @@
       <category term="java" scheme="https://blog.imyxiao.com/categories/java/"/>
     
     
+      <category term="certificate" scheme="https://blog.imyxiao.com/tags/certificate/"/>
+    
+      <category term="https" scheme="https://blog.imyxiao.com/tags/https/"/>
+    
       <category term="keystore" scheme="https://blog.imyxiao.com/tags/keystore/"/>
     
       <category term="pem" scheme="https://blog.imyxiao.com/tags/pem/"/>
     
       <category term="nginx" scheme="https://blog.imyxiao.com/tags/nginx/"/>
-    
-      <category term="certificate" scheme="https://blog.imyxiao.com/tags/certificate/"/>
-    
-      <category term="https" scheme="https://blog.imyxiao.com/tags/https/"/>
     
   </entry>
   
